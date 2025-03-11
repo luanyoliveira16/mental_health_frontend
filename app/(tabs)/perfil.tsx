@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,15 +7,41 @@ import {
   StyleSheet,
 } from "react-native";
 import { FontAwesome, MaterialIcons, Feather } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 export default function PerfilUsuario() {
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.uri);
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== "granted") {
+        alert("Desculpe, precisamos da permissão para acessar suas fotos!");
+      }
+    })();
+  }, []);
+
   return (
     <View style={styles.container}>
       {/* Cabeçalho */}
       <View style={styles.header}>
         <View style={styles.profilePicContainer}>
           <FontAwesome name="user-circle" size={70} color="white" />
-          <TouchableOpacity style={styles.cameraIcon}>
+          <TouchableOpacity style={styles.cameraIcon} onPress={pickImage}>
             <FontAwesome name="camera" size={16} color="white" />
           </TouchableOpacity>
         </View>

@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
   const [selectedDoctor, setSelectedDoctor] = useState(null);

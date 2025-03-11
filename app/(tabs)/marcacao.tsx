@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { DateData } from "react-native-calendars";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
   const [selectedDate, setSelectedDate] = useState(null);

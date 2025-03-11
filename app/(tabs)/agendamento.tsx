@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome, MaterialIcons, Feather } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 export default function ConfirmacaoAgendamento() {
   return (

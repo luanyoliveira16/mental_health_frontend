@@ -7,6 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 const consultas = [
   {
